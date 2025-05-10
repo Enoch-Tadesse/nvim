@@ -24,5 +24,10 @@ keymap("n", "<leader>ff", ":Telescope find_files<CR>", { noremap = true, silent 
 keymap("n", "<leader>fg", ":Telescope live_grep<CR>", { noremap = true, silent = true })
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", { noremap = true, silent = true })
 keymap("n", "<leader>fh", ":Telescope help_tags<CR>", { noremap = true, silent = true })
+---------------git bindingss ----------------
+keymap("n", "<leader>tgc", ":Telescope git_commits<CR>", { noremap = true, silent = true })
+keymap("n", "<leader>tgb", ":Telescope git_branches<CR>", { noremap = true, silent = true })
+keymap("n", "<leader>tgs", ":Telescope git_status<CR>", { noremap = true, silent = true })
+keymap("n", "<leader>tgS", ":Telescope git_stash<CR>", { noremap = true, silent = true })
 
 return telescope
