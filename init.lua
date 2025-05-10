@@ -1,8 +1,17 @@
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = " "
 
+------------------------uncomment for trash windows ------------------------------------
+
+-- local joinpath = vim.fs and vim.fs.joinpath or function(...) return table.concat({...}, "/") end
+-- local lazypath = joinpath(vim.fn.stdpath("data"), "lazy", "lazy.nvim")
+
+------------------------uncomment for trash windows ------------------------------------
+
 -- bootstrap lazy and all plugins
+-----------------------comment this for windows ---------------------------
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+-----------------------comment this for windows ---------------------------
 
 if not vim.uv.fs_stat(lazypath) then
     local repo = "https://github.com/folke/lazy.nvim.git"
