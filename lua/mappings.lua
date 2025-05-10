@@ -1,0 +1,103 @@
+require "nvchad.mappings"
+
+-- add yours here
+
+local map = vim.keymap.set
+
+map("n", ";", ":", { desc = "CMD enter command mode" })
+map("i", "jk", "<ESC>")
+
+-- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+
+----------------------------------------
+
+-----------------------Terminal-----------------------
+map({ "n", "t" }, "<A-i>", function()
+    require("nvchad.term").toggle { pos = "float", id = "floatTerm", float_opts={
+        row = 0.05,
+        col = 0.08,
+        width = 0.8,
+        height = 0.8
+    }}
+end, { desc = "terminal toggle floating term" })
+-----------------------Terminal-----------------------
+
+--------------------------QuickFix --------------------------
+map("n", "<leader>qf", function()
+    vim.diagnostic.setqflist()
+    vim.cmd "copen"
+end, { desc = "Populate and open quickfix list" })
+map("n", "cn", ":cnext<CR>", { silent = true, desc = "Next quickfix item" })
+map("n", "cp", ":cprev<CR>", { silent = true, desc = "Previous quickfix item" })
+
+--------------------------QuickFix --------------------------
+
+--------------------------Fugitive --------------------------
+map("n", "<leader>gs", ":Git<CR>", { noremap = true, silent = true, desc = "git status" })
+map("n", "<leader>ga", ":Gwrite<CR>", { noremap = true, silent = true, desc = "Git add current file" })
+map("n", "<leader>gc", ":Git commit<CR>", { noremap = true, silent = true, desc = "Git commit" })
+map("n", "<leader>gp", ":Git push<CR>", { noremap = true, silent = true, desc = "Git push" })
+map("n", "<leader>gP", ":Git pull<CR>", { noremap = true, silent = true, desc = "Git pull" })
+map("n", "<leader>gd", ":Gdiffsplit<CR>", { noremap = true, silent = true, desc = "Git diff split" })
+map("n", "<leader>gv", ":Gvdiffsplit<CR>", { noremap = true, silent = true, desc = "Git diff split" })
+map("n", "<leader>gb", ":Git blame<CR>", { noremap = true, silent = true, desc = "Git blame" })
+map("n", "<leader>gl", ":Git log<CR>", { noremap = true, silent = true, desc = "Git log" })
+map("n", "<leader>gco", ":Git checkout ", { noremap = true, silent = false, desc = "Git checkout branch" })
+map("n", "<leader>gr", ":Gread<CR>", { noremap = true, silent = true, desc = "Git restore file (Gread)" })
+--------------------------Fugitive --------------------------
+
+--------------------------Gitsigns --------------------------
+map("n", "<leader>ts", ":Gitsigns stage_hunk<CR>")
+map("n", "<leader>tr", ":Gitsigns reset_hunk<CR>")
+
+map("n", "<leader>tS", ":Gitsigns stage_buffer<CR>")
+map("n", "<leader>tR", ":Gitsigns reset_buffer<CR>")
+map("n", "<leader>tp", ":Gitsigns preview_hunk<CR>")
+map("n", "<leader>ti", ":Gitsigns preview_hunk_inline<CR>")
+
+map("n", "<leader>td", ":Gitsigns diffthis<CR>")
+
+map("n", "<leader>tq", ":Gitsigns setqflist<CR>")
+
+-- Toggles
+map("n", "<leader>tb", ":Gitsigns toggle_current_line_blame<CR>")
+map("n", "<leader>tw", ":Gitsigns toggle_word_diff<CR>")
+-------------------------Gitsigns ------------------------------
+
+-------------------------nvim-tree -----------------------------
+-- map("n", "<leader>e", ":NvimTreeOpen<CR>", { noremap = true, silent = true })
+
+-- map("n", "<leader>e", ":NvimTreeFocus<CR>", { noremap = true, silent = true })
+-- map("n", "<C-n>", ":NvimTreeClose<CR>", { noremap = true, silent = true })
+-------------------------nvim-tree -----------------------------
+
+-------------------------buffer line ----------------------------
+-- map("n", "<Tab>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
+-- map("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
+-------------------------buffer line ----------------------------
+
+map("t", "<C-x>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+
+map("n", "<leader>x", "<CMD>bd<CR>", { noremap = true, silent = true, desc = "Close current buffer" })
+
+map("n", "<leader>/", "gcc", { remap = true, silent = true, desc = "Toggle comment" })
+map("v", "<leader>/", "gc", { remap = true, silent = true, desc = "Toggle comment" })
+
+map("n", ";", ":", { desc = "CMD enter command mode" })
+map("i", "jk", "<ESC>")
+
+map("v", "J", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
+map("v", "K", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
+
+map("n", "J", ":m .+1<CR>==", { noremap = true, silent = true })
+map("n", "K", ":m .-2<CR>==", { noremap = true, silent = true })
+
+map("n", "<C-l>", "<C-w>l", { noremap = true, silent = true })
+map("n", "<C-k>", "<C-w>k", { noremap = true, silent = true })
+map("n", "<C-h>", "<C-w>h", { noremap = true, silent = true })
+map("n", "<C-j>", "<C-w>j", { noremap = true, silent = true })
+
+map("i", "<left>", "<cmd>echo 'not today'<CR>")
+map("i", "<right>", "<cmd>echo 'not today'<CR>")
+map("i", "<up>", "<cmd>echo 'not today'<CR>")
+map("i", "<down>", "<cmd>echo 'not today'<CR>")
