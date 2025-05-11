@@ -17,13 +17,14 @@ local options = {
         -- cpp
         ["clang-format"] = {
             prepend_args = {
-                "-style={ \
-                IndentWidth: 4, \
-                TabWidth: 4, \
-                UseTab: Never, \
-                AccessModifierOffset: 0, \
-                IndentAccessModifiers: true, \
-                PackConstructorInitializers: Never}",
+            --     "-style={ \
+            --     BasedOnStyle: google, \
+            --     IndentWidth: 2, \
+            --     TabWidth: 2, \
+            --     UseTab: Never, \
+            --     AccessModifierOffset: 0, \
+            --     IndentAccessModifiers: true, \
+            --     PackConstructorInitializers: Never}",
             },
         },
         -- javascript
