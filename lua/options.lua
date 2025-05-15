@@ -6,7 +6,11 @@ require "nvchad.options"
 -- o.cursorlineopt ='both' -- to enable cursorline!
 
 --------------------------------------------------------
-vim.highlight.priorities.semantic_tokens = 99
+vim.opt.guicursor = "" -- fat cursor
+vim.opt.swapfile = false -- no swap file
+vim.opt.backup = false -- no backup file
+
+vim.highlight.priorities.semantic_tokens = 95
 vim.opt.clipboard = "unnamedplus"
 vim.opt.termguicolors = true
 

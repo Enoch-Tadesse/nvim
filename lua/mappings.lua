@@ -86,8 +86,8 @@ map("v", "<leader>/", "gc", { remap = true, silent = true, desc = "Toggle commen
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
-map("v", "J", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
-map("v", "K", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
+map("x", "J", ":m '>+1<CR>gv=gv", { noremap = true, silent = true }) -- restrict the motion to visual mode only, excluding selection mode
+map("x", "K", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
 
 map("n", "J", ":m .+1<CR>==", { noremap = true, silent = true })
 map("n", "K", ":m .-2<CR>==", { noremap = true, silent = true })
@@ -101,3 +101,17 @@ map("i", "<left>", "<cmd>echo 'not today'<CR>")
 map("i", "<right>", "<cmd>echo 'not today'<CR>")
 map("i", "<up>", "<cmd>echo 'not today'<CR>")
 map("i", "<down>", "<cmd>echo 'not today'<CR>")
+
+
+-----------------------------------Telescope ------------------------------------
+-- keymap("n", "<leader>ff", ":Telescope find_files<CR>", { noremap = true, silent = true }) -- this respects .gitignore
+map("n", "<leader>ff", ":Telescope find_files find_command=rg,--no-ignore,--hidden,--files prompt_prefix=🔍<CR>", { noremap = true, silent = true })
+map("n", "<leader>fg", ":Telescope live_grep<CR>", { noremap = true, silent = true })
+map("n", "<leader>fb", ":Telescope buffers<CR>", { noremap = true, silent = true })
+map("n", "<leader>fh", ":Telescope help_tags<CR>", { noremap = true, silent = true })
+---------------git bindingss ----------------
+map("n", "<leader>tgc", ":Telescope git_commits<CR>", { noremap = true, silent = true })
+map("n", "<leader>tgb", ":Telescope git_branches<CR>", { noremap = true, silent = true })
+map("n", "<leader>tgs", ":Telescope git_status<CR>", { noremap = true, silent = true })
+map("n", "<leader>tgS", ":Telescope git_stash<CR>", { noremap = true, silent = true })
+-----------------------------------Telescope ------------------------------------
