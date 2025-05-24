@@ -7,7 +7,7 @@ local on_attach = function(client, bufnr)
     local opts = { noremap = true, silent = true, buffer = bufnr }
     local keymap = vim.keymap.set
     -- if client.name == "pyright" then
-    --     client.server_capabilities.signatureHelpProvider = false
+    client.server_capabilities.signatureHelpProvider = false
     -- end
     client.server_capabilities.semanticTokensProvider = nil
     keymap("n", "df", vim.lsp.buf.definition, opts)
@@ -37,21 +37,29 @@ lspconfig.biome.setup {
 }
 
 require("lspconfig").jdtls.setup {
-    -- settings = {
-    --     java = {
-    --         configuration = {
-    --             runtimes = {
-    --                 {
-    --                     name = "JavaSE-23",
-    --                     path = jdkPath,
-    --                     default = true,
-    --                 },
-    --             },
-    --         },
-    --     },
-    -- },
-    filetypes = { "java" },
+    on_attach = on_attach,
+    capabilities = capabilities,
+    ft = { "java" },
 }
+
+-- local jdkPath = "/usr/lib/jvm/jdk-24.0.1/"
+-- require("lspconfig").jdtls.setup {
+-- settings = {
+--     java = {
+--         configuration = {
+--             runtimes = {
+--                 {
+--                     name = "JavaSE-24",
+--                     path = jdkPath,
+--                     -- default = true,
+--                 },
+--             },
+--         },
+--     },
+-- },
+-- filetypes = { "java" },
+-- ft = { "java" },
+-- }
 
 lspconfig.pyright.setup {
     capabilities = capabilities,
@@ -60,7 +68,7 @@ lspconfig.pyright.setup {
     settings = {
         python = {
             -- make sure to source the activate in bashrc
-            pythonPath = "/home/henok/Desktop/messi/venv/bin/python", -- path to your exe ven python
+            pythonPath = "/home/henok/Desktop/math/bin/python", -- path to your exe ven python
         },
     },
 }

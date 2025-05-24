@@ -109,6 +109,7 @@ map("n", "<leader>ff", ":Telescope find_files find_command=rg,--no-ignore,--hidd
 map("n", "<leader>fg", ":Telescope live_grep<CR>", { noremap = true, silent = true })
 map("n", "<leader>fb", ":Telescope buffers<CR>", { noremap = true, silent = true })
 map("n", "<leader>fh", ":Telescope help_tags<CR>", { noremap = true, silent = true })
+map("n", "<leader>tm", ":Telescope marks<CR>", { noremap = true, silent = true })
 ---------------git bindingss ----------------
 map("n", "<leader>tgc", ":Telescope git_commits<CR>", { noremap = true, silent = true })
 map("n", "<leader>tgb", ":Telescope git_branches<CR>", { noremap = true, silent = true })

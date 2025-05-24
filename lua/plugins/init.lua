@@ -1,14 +1,34 @@
 return {
     {
-        { import = "configs.java" },
+        "nvim-java/nvim-java",
+        dependencies = {
+            "nvim-java/lua-async-await",
+            "nvim-java/nvim-java-core",
+            "nvim-java/nvim-java-test",
+            "nvim-java/nvim-java-dap",
+            "MunifTanjim/nui.nvim",
+            "mfussenegger/nvim-dap",
+            "williamboman/mason.nvim",
+            {
+                "williamboman/mason.nvim",
+                opts = {
+                    registries = {
+                        "github:nvim-java/mason-registry",
+                        "github:mason-org/mason-registry",
+                    },
+                },
+            },
+        },
+        config = function()
+            require("java").setup {
+                jdk = {
+                    auto_install = false,
+                    -- version = "23.0.2",
+                    version = "24.0.1",
+                },
+            }
+        end,
     },
-    -- {
-    --     "mfussenegger/nvim-jdtls",
-    --     ft = { "java" },
-    --     config = function()
-    --         require "configs.jdtls"
-    --     end,
-    -- },
 
     {
         "williamboman/mason.nvim",
@@ -45,6 +65,68 @@ return {
     },
 
     {
+        "chentoast/marks.nvim",
+        event = "BufReadPost",
+        config = function()
+            require("marks").setup()
+        end,
+    },
+
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+            "hrsh7th/nvim-cmp",
+            "hrsh7th/cmp-cmdline",
+        },
+        config = function()
+            require "configs.noice"
+        end,
+    },
+
+    {
+        "folke/snacks.nvim",
+        priority = 1000,
+        lazy = false,
+        ---@type snacks.Config
+        opts = {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+            bigfile = { enabled = true },
+            dashboard = { enabled = true },
+            explorer = { enabled = true },
+            indent = { enabled = true },
+            input = { enabled = true },
+            picker = { enabled = true },
+            notifier = { enabled = true },
+            quickfile = { enabled = true },
+            scope = { enabled = true },
+            scroll = { enabled = false },
+            statuscolumn = { enabled = true },
+            words = { enabled = true },
+        },
+        keys = {
+            {
+                "<leader>sm",
+                function()
+                    Snacks.picker.marks()
+                end,
+                desc = "Marks",
+            },
+            {
+                "<leader>fe",
+                function()
+                    Snacks.explorer()
+                end,
+                desc = "File Explorer",
+            },
+        },
+    },
+
+    {
         "folke/which-key.nvim",
         event = "VimEnter",
         opts = {
@@ -71,15 +153,6 @@ return {
     },
 
     {
-        "echasnovski/mini.indentscope",
-        event = "BufEnter",
-        version = false, -- Use latest commit
-        config = function()
-            require "configs.indentscope"
-        end,
-    },
-
-    {
         "A7lavinraj/assistant.nvim",
         lazy = false,
         enabled = true,
@@ -92,14 +165,6 @@ return {
                 diff_mode = true,
             },
         },
-    },
-
-    {
-        "stevearc/dressing.nvim",
-        event = "VeryLazy",
-        config = function()
-            require("configs.dressing").setup()
-        end,
     },
 
     {
@@ -226,6 +291,15 @@ return {
         config = function()
             require "configs.terminal"
         end,
+    },
+
+    {
+        "nvim-tree/nvim-tree.lua",
+        opts = {
+            filters = {
+                git_ignored = false, -- doesn't respect .gitinore
+            },
+        },
     },
 
     -- {

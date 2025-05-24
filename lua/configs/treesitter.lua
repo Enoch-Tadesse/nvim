@@ -38,7 +38,7 @@ require("nvim-treesitter.configs").setup {
 
     highlight = {
         enable = true,
-        -- additional_vim_regex_highlighting = false,
+        additional_vim_regex_highlighting = false,
         -- list of language that will be disabled
         disable = { "c", "rust" },
         -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files

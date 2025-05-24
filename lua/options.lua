@@ -5,12 +5,24 @@ require "nvchad.options"
 -- local o = vim.o
 -- o.cursorlineopt ='both' -- to enable cursorline!
 
+
+
+-------------------------auto commands-----------------------
+--- disable treesitter and lsp for syntax highlighting and uncomment this for no syntax
+-- vim.api.nvim_create_autocmd("BufReadPost", {
+--   pattern = "*",
+--   callback = function()
+--     vim.cmd("syntax off")
+--   end,
+-- })
+-------------------------auto commands-----------------------
+
 --------------------------------------------------------
 vim.opt.guicursor = "" -- fat cursor
 vim.opt.swapfile = false -- no swap file
 vim.opt.backup = false -- no backup file
 
-vim.highlight.priorities.semantic_tokens = 95
+vim.hl.priorities.semantic_tokens = 0
 vim.opt.clipboard = "unnamedplus"
 vim.opt.termguicolors = true
 

@@ -22,7 +22,8 @@ return {
         require("java").setup {
             jdk = {
                 auto_install = false,
-                version = "23.0.2",
+                -- version = "23.0.2",
+                version = "24.0.1",
             },
         }
         -- local jdkPath = "/usr/lib/jvm/jdk-23.0.2-oracle-x64/"
