@@ -5,20 +5,32 @@ require "nvchad.mappings"
 local map = vim.keymap.set
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
+map("n", "j" , "gj", { desc = "Move down by visual line" })
+map("n", "k" , "gk", { desc = "Move up by visual line" })
+map("n", "<C-p>", "<CMD>put +<CR>", { noremap = true, silent = true, desc = "Paste from clipboard" })
 map("i", "jk", "<ESC>")
+map("i", "<A-l>", "<ESC>ll", {noremap = true, silent = true, desc = "Move to the end of the line in insert mode"})
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
-----------------------------------------
+-------------------------Copilot_________________________
+map("i", "<C-Space>", function()
+  require("copilot.suggestion").accept()
+end, { noremap = true, silent = true })
+-------------------------Copilor_________________________
 
------------------------Terminal-----------------------
+----------------------Terminal-----------------------
 map({ "n", "t" }, "<A-i>", function()
-    require("nvchad.term").toggle { pos = "float", id = "floatTerm", float_opts={
-        row = 0.05,
-        col = 0.08,
-        width = 0.8,
-        height = 0.8
-    }}
+    require("nvchad.term").toggle {
+        pos = "float",
+        id = "floatTerm",
+        float_opts = {
+            row = 0.05,
+            col = 0.08,
+            width = 0.8,
+            height = 0.8,
+        },
+    }
 end, { desc = "terminal toggle floating term" })
 -----------------------Terminal-----------------------
 
@@ -102,10 +114,14 @@ map("i", "<right>", "<cmd>echo 'not today'<CR>")
 map("i", "<up>", "<cmd>echo 'not today'<CR>")
 map("i", "<down>", "<cmd>echo 'not today'<CR>")
 
-
 -----------------------------------Telescope ------------------------------------
 -- keymap("n", "<leader>ff", ":Telescope find_files<CR>", { noremap = true, silent = true }) -- this respects .gitignore
-map("n", "<leader>ff", ":Telescope find_files find_command=rg,--no-ignore,--hidden,--files prompt_prefix=🔍<CR>", { noremap = true, silent = true })
+map(
+    "n",
+    "<leader>ff",
+    ":Telescope find_files find_command=rg,--no-ignore,--hidden,--files prompt_prefix=🔍<CR>",
+    { noremap = true, silent = true }
+)
 map("n", "<leader>fg", ":Telescope live_grep<CR>", { noremap = true, silent = true })
 map("n", "<leader>fb", ":Telescope buffers<CR>", { noremap = true, silent = true })
 map("n", "<leader>fh", ":Telescope help_tags<CR>", { noremap = true, silent = true })
