@@ -68,7 +68,13 @@ lspconfig.pyright.setup {
     settings = {
         python = {
             -- make sure to source the activate in bashrc
-            pythonPath = "/home/henok/Desktop/math/bin/python", -- path to your exe ven python
+            pythonPath = "/home/henok/global/bin/python", -- path to your exe ven python
+            analysis = {
+                typeCheckingMode = "basic", -- or "off" for even less strictness
+                diagnosticSeverityOverrides = {
+                    reportIncompatibleMethodOverride = "none", -- <== THIS silences the override warnings
+                },
+            },
         },
     },
 }
