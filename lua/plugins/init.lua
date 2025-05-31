@@ -1,4 +1,25 @@
 return {
+    {
+        "kylechui/nvim-surround",
+        version = "^3.0.0", -- Use for stability; omit to use `main` branch for the latest features
+        event = "VeryLazy",
+        -- event = "InsertEnter", -- Load on InsertEnter event
+        config = function()
+            require("nvim-surround").setup {
+                -- Configuration here, or leave empty to use defaults
+            }
+        end,
+    },
+
+    {
+        "m4xshen/hardtime.nvim",
+        lazy = false,
+        dependencies = { "MunifTanjim/nui.nvim" },
+        opts = {},
+        config = function(_, opts)
+            require("hardtime").setup(opts)
+        end,
+    },
 
     {
         "zbirenbaum/copilot.lua",

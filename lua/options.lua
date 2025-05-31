@@ -5,8 +5,6 @@ require "nvchad.options"
 -- local o = vim.o
 -- o.cursorlineopt ='both' -- to enable cursorline!
 
-
-
 -------------------------auto commands-----------------------
 --- disable treesitter and lsp for syntax highlighting and uncomment this for no syntax
 -- vim.api.nvim_create_autocmd("BufReadPost", {
@@ -18,14 +16,22 @@ require "nvchad.options"
 -------------------------auto commands-----------------------
 
 --------------------------------------------------------
+vim.opt.completeopt = { "menuone", "noselect" } -- shows menu even if it is one and the first choice is not auto selected
+vim.opt.fileencoding = "utf-8" -- default is utf-8 but just making sure
+vim.opt.showmode = false -- show current mode at the bottom
+vim.opt.title = true -- set terminal title
+vim.opt.incsearch = true -- incremental search -- shows matches as you type
+-- vim.opt.syntax = "on" -- enable syntax highlighting
+
+
 vim.opt.guicursor = "" -- fat cursor
 vim.opt.swapfile = false -- no swap file
 vim.opt.backup = false -- no backup file
 
 vim.hl.priorities.semantic_tokens = 0
-vim.opt.clipboard = "unnamedplus"
+vim.opt.clipboard = "unnamedplus" -- uses system clipboard
 vim.opt.termguicolors = true
-
+vim.opt.wrap = true -- no line wrap
 vim.diagnostic.config {
     virtual_text = true, -- shows inline error messages
     signs = false, -- turns of signs like E, W, H, I ,U
@@ -39,7 +45,8 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
+vim.opt.expandtab = false -- use tabs instead of spaces -- use real tabs instead of spaces
+vim.opt.smartindent = true -- smart indenting
 vim.opt.breakindent = true
 
 -- Save undo history
@@ -56,7 +63,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 200
 
 -- Decrease mapped sequence wait time
-vim.opt.timeoutlen = 150
+vim.opt.timeoutlen = 250
 
 -- Configure how new splits should be opened
 vim.opt.splitright = true
@@ -72,10 +79,11 @@ vim.opt.splitbelow = true
 vim.opt.inccommand = "split"
 
 -- Show which line your cursor is on
-vim.opt.cursorline = false
+vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
+vim.opt.sidescrolloff = 10
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)

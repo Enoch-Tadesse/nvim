@@ -14,6 +14,7 @@ local options = {
         json = { "prettier" },
         -- go = { "gofmt" },
         -- go = { "gopls" },
+        jsx = { "prettier" },
     },
     formatters = {
         -- cpp
